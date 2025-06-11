@@ -1,17 +1,20 @@
 
 #include "DHT.h"
-
 #define DHTPIN 2     
-
 #define DHTTYPE DHT11   
-
 DHT dht(DHTPIN, DHTTYPE);
+
+int rojo=7;
+int verde=8;
+
 
 void setup() {
   Serial.begin(9600);
   Serial.println(F("DHTxx test!"));
 
   dht.begin();
+  pinMode(rojo,OUTPUT);
+  pinMode(verde,OUTPUT);
 }
 
 void loop() {
@@ -55,5 +58,19 @@ void loop() {
   //Tierra humeda = 503
   //Tierra Mojada = 360
 
+  if(val < 400){
+    digitalWrite(rojo, HIGH);
+    digitalWrite(verde,LOW);
+    Serial.println(" > 400");}
+
+  if (val > 400 && val < 550) {
+    digitalWrite(rojo, HIGH);
+    digitalWrite(verde,LOW);
+    Serial.println("> 400 & <550");}
+    
+  if(val > 550){
+    digitalWrite(rojo, LOW);
+    digitalWrite(verde,HIGH);
+    Serial.println(" > 550");}
 
 }
