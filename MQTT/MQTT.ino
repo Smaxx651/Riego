@@ -45,10 +45,12 @@ void setup() {
   }
 
   Serial.println("You're connected to the network");
+
   Serial.println();
 
   Serial.print("Attempting to connect to the MQTT broker: ");
   Serial.println(broker);
+   encender (100);
 
   if (!mqttClient.connect(broker, port)) {
     Serial.print("MQTT connection failed! Error code = ");
@@ -139,6 +141,7 @@ void loop() {
   Serial.print(hic);
   Serial.print(F("°C "));
   Serial.println(F("°F"));
+  if 
 }
 }
   
