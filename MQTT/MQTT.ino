@@ -41,7 +41,10 @@ void setup() {
   while (WiFi.begin(ssid, pass) != WL_CONNECTED) {
     // failed, retry
     Serial.print(".");
+    digitalWrite(rojo, HIGH);
+
     delay(5000);
+    
   }
 
   Serial.println("You're connected to the network");
@@ -50,17 +53,18 @@ void setup() {
 
   Serial.print("Attempting to connect to the MQTT broker: ");
   Serial.println(broker);
-   encender (100);
+  encender (100);
 
   if (!mqttClient.connect(broker, port)) {
     Serial.print("MQTT connection failed! Error code = ");
     Serial.println(mqttClient.connectError());
-
+    apagar (200);
     while (1);
   }
 
   Serial.println("You're connected to the MQTT broker!");
   Serial.println();
+  digitalWrite(verde, HIGH);
 
   pinMode(rojo, OUTPUT);
   pinMode(verde, OUTPUT);
