@@ -15,7 +15,7 @@ char pass[] = SECRET_PASS;
 WiFiClient wifiClient;
 MqttClient mqttClient(wifiClient);
 
-const char broker[] = "10.100.3.10";
+const char broker[] = "10.100.3.11";
 int        port     = 1883;
 const char topic[]  = "real_unique_topic";
 const char topic2[]  = "real_unique_topic_2";
@@ -145,11 +145,11 @@ void loop() {
   Serial.print(hic);
   Serial.print(F("°C "));
   Serial.println(F("°F"));
-  if 
+  
 }
 }
   
-  void encender (int tiempo){
+void encender (int tiempo){
       digitalWrite(verde, HIGH);
       digitalWrite(rojo, LOW);
       delay(tiempo);
