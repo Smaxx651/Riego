@@ -80,7 +80,7 @@ void setup() {
   Serial.print("Conectando a: "); Serial.println(ssid);
   while (WiFi.begin(ssid, pass) != WL_CONNECTED) {
     Serial.print(".");
-    delay(2000);
+    delay(200);
   }
   Serial.println("\nWiFi OK");
   brokerOK = true;
@@ -113,7 +113,7 @@ void loop() {
     delay(200); 
   }
   ultimoEstadoBoton = estadoBoton;
-  Serial.println(ultimoEstadoBoton);
+  
 
 
   unsigned long now = millis();
@@ -121,7 +121,16 @@ void loop() {
     previousMillis = now;
 
     int Rvalue  = analogRead(A0);
-    int Rvalue2 = analogRead(A1);
+    int Rvalue2 = analogRead(A1); 
+    Serial.print("Sensor suelo: ");
+Serial.println(Rvalue2);
+
+float humedad = map(Rvalue2, 1023, 450, 0, 100);
+Serial.print("Humedad: ");
+Serial.print(humedad);
+Serial.println("%");
+
+
     float t = dht.readTemperature();
     float h = dht.readHumidity();
 
